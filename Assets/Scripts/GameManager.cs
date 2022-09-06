@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioManager = GameObject.FindObjectOfType<AudioManager>();
+        audioManager.bgAudio.Play();
         gameWin.SetActive(false);
         scoreText.text = "Score: " + 0;
         gameOver.SetActive(false);

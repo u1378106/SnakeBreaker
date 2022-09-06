@@ -65,6 +65,7 @@ public class Ball : MonoBehaviour
         if (other.gameObject.tag == "gameover")
         {      
             gameManager.gameOver.SetActive(true);
+            audioManager.bgAudio.Stop();
             audioManager.gameOverAudio.Play();
             Destroy(gameManager);
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("snake"))

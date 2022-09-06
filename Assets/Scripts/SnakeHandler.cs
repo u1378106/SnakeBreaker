@@ -25,17 +25,27 @@ public class SnakeHandler : MonoBehaviour
 
     private int snakeCount = 4;
 
+    private List<int> uniqueNumbers;
+    private List<int> finishedNumbers;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i <= snakeCount; i++)
+        uniqueNumbers = new List<int>();
+        finishedNumbers = new List<int>();
+
+        GenerateUniqueRandomList();
+
+        for (int i = 0; i < snakeCount; i++)
         {
             bodyPartsCount = Random.Range(4, 8);
 
             snake = new GameObject("Snake");
             snake = Instantiate(snake, Vector3.zero, Quaternion.identity, this.transform);
 
-            GameObject snakeHead = Instantiate(Resources.Load("SnakeParts/SnakeHeadRight") as GameObject, (spawnPositions[Random.Range(0, spawnPositions.Length)]).transform.position, Quaternion.identity, snake.transform);
+            GameObject snakeHead = Instantiate(Resources.Load("SnakeParts/SnakeHeadRight") as GameObject, (spawnPositions[finishedNumbers[i]]).transform.position, Quaternion.identity, snake.transform);
             snakeHead.tag = "snake";
 
             snakeBodyPos = new Vector3(snakeHead.transform.position.x, snakeHead.transform.position.y, 0);
@@ -54,9 +64,17 @@ public class SnakeHandler : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GenerateUniqueRandomList()
     {
-  
+        for (int i = 0; i < snakeCount; i++)
+        {
+            uniqueNumbers.Add(i);
+        }
+        for (int i = 0; i < snakeCount; i++)
+        {
+            int ranNum = uniqueNumbers[Random.Range(0, uniqueNumbers.Count)];
+            finishedNumbers.Add(ranNum);
+            uniqueNumbers.Remove(ranNum);
+        }
     }
 }

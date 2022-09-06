@@ -31,7 +31,7 @@ public class Snake : MonoBehaviour
         //    Destroy(this.gameObject);
         //}
 
-        this.transform.Translate(new Vector2(1, 0) * Time.deltaTime * Random.Range(2, speed));
+        this.transform.Translate(new Vector2(1, 0) * Time.deltaTime * Random.Range(0.1f, speed));
     }
 
    

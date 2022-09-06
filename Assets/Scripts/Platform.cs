@@ -30,12 +30,12 @@ public class Platform : MonoBehaviour
 
     private void MovePlatform()
     {
-        if(Input.GetKey(KeyCode.A) && this.transform.position.x >= leftCorner)
+        if(Input.GetKey(KeyCode.A) && this.transform.position.x >= leftCorner - 1)
         {
             this.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * speed);
         }
 
-        else if (Input.GetKey(KeyCode.D) && this.transform.position.x <= rightCorner)
+        else if (Input.GetKey(KeyCode.D) && this.transform.position.x <= rightCorner + 1)
         {
             this.transform.Translate(new Vector2(1, 0) * Time.deltaTime * speed);
         }
